@@ -1,6 +1,3 @@
-import React from 'react'
-// import { BiCaretUp} from "react-icons/bi";
-//import {BiCaretDown} from "react-icons/bi";
 import {BiBasket} from "react-icons/bi";
 import { useSelector } from 'react-redux';
 
@@ -12,7 +9,7 @@ const {amount} = useSelector((store)=>store.cart)
         <h2>Shopping cart</h2>
      
      <BiBasket/>
-      <h3>{amount}</h3>
+  <h3>{amount}</h3>
     </div>
   )
 }
