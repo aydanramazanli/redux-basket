@@ -12,6 +12,6 @@ export default function CartItems({ id, img, price, amount, title }) {
     <BiCaretUp/>
     <h4>{amount}</h4>
     <BiCaretDown/>
-</div>
+</div>g
   </article>;
 }
