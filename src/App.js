@@ -8,13 +8,15 @@ import { useEffect } from "react";
 function App() {
   const dispatch = useDispatch();
   const { cartItems } = useSelector((store) => store.cart);
+  const {isOpen}  = useSelector((store)=>store.modal)
 
   useEffect(() => {
     dispatch(totalPrice());
   }, [cartItems]);
   return (
     <div className="App">
-      <Modal/>
+      {isOpen &&   <Modal/>}
+    
       <Navbar />
       <CartContainer />
     </div>

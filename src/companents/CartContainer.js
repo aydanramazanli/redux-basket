@@ -1,10 +1,12 @@
 import CartItems from "./CartItems";
 import { useDispatch,  useSelector } from "react-redux"; 
-import { clearBasket } from "../features/cart/cartSlice";
+import {openModal} from '../features/cart/modalSlice';
+
 
 export default function CartContainer() {
   const dispatch = useDispatch()
   const { total, cartItems, amount } = useSelector((store) => store.cart);
+
 
   if (amount >1 ) {
     return (
@@ -20,7 +22,7 @@ export default function CartContainer() {
        </div>
 
        <div>
-        <button onClick={()=>dispatch(clearBasket())}>Clear basket</button>
+        <button onClick={()=>dispatch(openModal())}>Clear basket</button>
        </div>
       </div>
     );
