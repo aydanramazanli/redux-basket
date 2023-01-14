@@ -1,18 +1,33 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import cartItems from "../../cartItems";
+//import cartItems from "../../cartItems";
+import axios from 'axios'
 
 const initialState = {
-  cartItems: cartItems,
+  //cartItems: cartItems,
+  cartItems:[],
   amount: 2,
   total: 0,
   isLoading: true,
 };
 
-const url = "https://course-api.com/react-useReducer-cart-project";
-export const getCartItems = createAsyncThunk("cart/getCartItems", () => {
-  return fetch(url)
-    .then((response) => response.json())
-    .catch((error) => console.error(error));
+const url = "https://course-api.com/react-useReducer-cart-projects";
+export const getCartItems = createAsyncThunk("cart/getCartItems", async(testParametr, thunkAPI) => {
+//with axios
+  try{
+    //console.log(testParametr)
+    console.log(thunkAPI.getState())
+    const response= await axios(url);
+   // console.log(response)
+    return response.data
+  }
+  catch(error){
+return thunkAPI.rejectWithValue("something went wrong")
+  }
+
+  //with  promise fetch 
+  // return fetch(url)
+  //   .then((response) => response.json())
+  //   .catch((error) => console.error(error));
 });
 
 const cartSlice = createSlice({
@@ -53,11 +68,12 @@ const cartSlice = createSlice({
       state.isLoading = true;
     },
     [getCartItems.fulfilled]: (state, action) => {
-      console.log(action);
+     
       state.isLoading = false;
       state.cartItems = action.payload;
     },
-    [getCartItems.rejected]: (state) => {
+    [getCartItems.rejected]: (state, action) => {
+      console.log(action)
       state.isLoading = false;
     },
   },
