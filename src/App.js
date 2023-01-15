@@ -24,10 +24,11 @@ function App() {
     </div>)
   }
   return (
-    <div className="App">
+    <div className="App w-[60%] m-auto relative">
       {isOpen && <Modal />}
 
       <Navbar />
+      <hr/>
       <CartContainer />
     </div>
   );

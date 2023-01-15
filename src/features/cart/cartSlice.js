@@ -5,7 +5,7 @@ import axios from 'axios'
 const initialState = {
   //cartItems: cartItems,
   cartItems:[],
-  amount: 2,
+  amount: 0,
   total: 0,
   isLoading: true,
 };
